@@ -32,10 +32,30 @@ export const updatePost = async(req, res) => {
     const post = req.body
 
     // Check to see if _id is a valid mongoose id
-    if(!mongoose.Types.ObjectId.isValid(_id)) return res.status(404).send(`No post with id ${_id}`)
+    if(!mongoose.Types.ObjectId.isValid(_id)) return res.status(404).send(`Cannot update post with id ${_id}`)
 
     // If it is a valid mongoose id, update it.
     const updatedPost = await postMessage.findByIdAndUpdate(_id, post, {new: true})
+    
     console.log('Updated DB\n',updatedPost)
+    res.json(updatedPost)
+}
+
+export const deletePost = async(req, res) => {
+    const {id} = req.params
+    if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`Cannot delete post with id ${_id}`)
+    await postMessage.findByIdAndRemove(id)
+
+    console.log(`Deleted ${id}`)
+    res.json({message: 'Post deleted successfully'})
+}
+
+export const likePost = async(req, res) => {
+    const {id} = req.params
+    if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`Cannot like post with id ${_id}`)
+    const post = await postMessage.findById(id)
+    const updatedPost = await postMessage.findByIdAndUpdate(id, {likeCount: post.likeCount+1}, {new: true})
+
+    console.log(`Liked ${updatedPost._id}`)
     res.json(updatedPost)
 }

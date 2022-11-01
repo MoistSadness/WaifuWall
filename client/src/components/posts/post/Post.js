@@ -1,4 +1,6 @@
 import React from "react";
+import {useDispatch} from 'react-redux'
+import { deletePost, likePost } from '../../../actions/posts.js'
 import { styled } from '@mui/material/styles';
 import { Card, CardHeader, CardActions, CardContent, CardMedia, Button, Typography } from "@material-ui/core";
 import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
@@ -12,6 +14,7 @@ import useStyles from './styles.js'
 
 export default function Post({ post, setCurrentId }) {
     const classes = useStyles();
+    const dispatch = useDispatch()
     
     return (
         <Card className="classes.card">
@@ -33,9 +36,14 @@ export default function Post({ post, setCurrentId }) {
                 </Typography>
             </CardContent>
             <CardActions disableSpacing>
-                <IconButton aria-label="add to favorites">
+                <IconButton aria-label="add to favorites" onClick={() => dispatch(likePost(post._id))}>
+                    &nbsp;
                     <FavoriteIcon />
+                    &nbsp;
                     {post.likeCount}
+                </IconButton>
+                <IconButton aria-label="add to favorites" onClick={() => dispatch(deletePost(post._id))}>
+                    <DeleteIcon />
                 </IconButton>
             </CardActions>
         </Card>
