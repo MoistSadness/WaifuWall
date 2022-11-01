@@ -27,7 +27,7 @@ export const createPost = async (req, res) => {
 }
 
 export const updatePost = async(req, res) => {
-    console.log(req.body);
+    //console.log(req.body);
     const {id: _id} = req.params        // id: _id destrucatures id from req object and renames it to _id
     const post = req.body
 
@@ -36,5 +36,6 @@ export const updatePost = async(req, res) => {
 
     // If it is a valid mongoose id, update it.
     const updatedPost = await postMessage.findByIdAndUpdate(_id, post, {new: true})
+    console.log('Updated DB\n',updatedPost)
     res.json(updatedPost)
 }
