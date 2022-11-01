@@ -10,13 +10,13 @@ import IconButton, { IconButtonProps } from '@mui/material/IconButton';
 import moment from 'moment'
 import useStyles from './styles.js'
 
-export default function Post({ post }) {
+export default function Post({ post, setCurrentId }) {
     const classes = useStyles();
-    console.log(post)
+    
     return (
         <Card className="classes.card">
             <CardHeader title={post.title} subheader={post.creator} action={
-                <IconButton aria-label="settings">
+                <IconButton aria-label="settings" onClick={() => {setCurrentId(post._id)}}>
                     <MoreVertIcon />
                 </IconButton>
             }

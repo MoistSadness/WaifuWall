@@ -1,6 +1,7 @@
 /*
     Route logic lives here
 */
+import mongoose from 'mongoose'
 import postMessage from '../models/postMessage.js'
 
 export const getPosts = async (req, res) => {
@@ -23,5 +24,17 @@ export const createPost = async (req, res) => {
     }catch(error){
         res.status(409).json({message: error.message})
     }
+}
 
+export const updatePost = async(req, res) => {
+    console.log(req.body);
+    const {id: _id} = req.params        // id: _id destrucatures id from req object and renames it to _id
+    const post = req.body
+
+    // Check to see if _id is a valid mongoose id
+    if(!mongoose.Types.ObjectId.isValid(_id)) return res.status(404).send(`No post with id ${_id}`)
+
+    // If it is a valid mongoose id, update it.
+    const updatedPost = await postMessage.findByIdAndUpdate(_id, post, {new: true})
+    res.json(updatedPost)
 }
