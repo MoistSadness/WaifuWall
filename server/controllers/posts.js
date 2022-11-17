@@ -14,9 +14,11 @@ export const getPosts = async (req, res) => {
 }
 
 export const createPost = async (req, res) => {
-    console.log(req.body)
-    const post = req.body;
+    const imageName = req.file.originalname
+    const post = {...req.body, selectedFile: req.file.originalname};
+    
     const newPost = new postMessage(post)
+    console.log(newPost)
 
     try{
         await newPost.save()

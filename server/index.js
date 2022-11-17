@@ -3,7 +3,6 @@ import cors from "cors"
 import mongoose from "mongoose";
 import bodyParser from "body-parser"
 import dotenv from 'dotenv'
-import multer from "multer";
 
 import posts from './routes/posts.js'
 
@@ -11,10 +10,10 @@ const app = express()
 app.use(cors())
 dotenv.config()
 
-app.use(bodyParser.json({ limit: '30mb', extended: true }))
-app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }))
+app.use(express.static('public'));
 
-const upload = multer({ dest: './public/data/uploads/' })
+app.use(bodyParser.json({ limit: '30mb', extended: true }))
+app.use(bodyParser.urlencoded({ limit: '30mb', extended: true, parameterLimit: 10000 }))
 
 app.use('/posts', posts)
 
