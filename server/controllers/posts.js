@@ -14,6 +14,8 @@ export const getPosts = async (req, res) => {
 }
 
 export const createPost = async (req, res) => {
+
+    console.log(req.file)
     const imageName = req.file.originalname
 
     

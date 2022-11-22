@@ -1,24 +1,13 @@
-import multer from "multer";
-import DatauriParser from 'datauri/parser.js'
-import path from 'path'
+import multer from 'multer'
 
-// multer.memoryStorage() sets multer to save images to memory instead of local storage
-const storage = multer.memoryStorage()
-// Set the storage option to memory storage and to target form data with field 'selectedFile'
-const singleImageUpload = multer({ storage }).single('selectedFile')
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, './public/data/uploads/')
+    },
+    filename: function (req, file, cb) {
+        cb(null, file.originalname)
+    }
+})
+const upload = multer({ storage: storage })
 
-const parser = new DatauriParser();
-
-/*
-    Since the file is being stored in memory as a buffer, it needs to be converted to a string
-    so the cloudinary uploader will understand what it is
- */
-function dataUri(req) {
-    parser.format(path.extname(req.file.originalname).toString, req.file.buffer)
-}
-
-export {singleImageUpload, dataUri}
-
-
-
-
+export default upload
