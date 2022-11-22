@@ -15,6 +15,9 @@ export const getPosts = async (req, res) => {
 
 export const createPost = async (req, res) => {
     const imageName = req.file.originalname
+
+    
+
     const post = {...req.body, selectedFile: req.file.originalname};
     
     const newPost = new postMessage(post)
