@@ -4,6 +4,8 @@
 import mongoose from 'mongoose'
 import postMessage from '../models/postMessage.js'
 
+
+
 export const getPosts = async (req, res) => {
     try {
         const postMessages = await postMessage.find()
@@ -15,10 +17,8 @@ export const getPosts = async (req, res) => {
 
 export const createPost = async (req, res) => {
 
-    console.log(req.file)
+    //console.log(req.file)
     const imageName = req.file.originalname
-
-    
 
     const post = {...req.body, selectedFile: req.file.originalname};
     
