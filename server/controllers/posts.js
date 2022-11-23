@@ -4,7 +4,8 @@
 import mongoose from 'mongoose'
 import postMessage from '../models/postMessage.js'
 
-
+import cloudinary from '../config/cloudinary.js'
+//import upload from '../middleware/multer.js'
 
 export const getPosts = async (req, res) => {
     try {
@@ -16,9 +17,12 @@ export const getPosts = async (req, res) => {
 }
 
 export const createPost = async (req, res) => {
-
-    //console.log(req.file)
-    const imageName = req.file.originalname
+    const uploadedImage = cloudinary.cloudinary.uploader
+        .upload(req.file.path, {
+            use_filename: true,
+            folder: 'WaifuWall',
+        }).then(result => console.log(result))
+    console.log(uploadedImage)
 
     const post = {...req.body, selectedFile: req.file.originalname};
     

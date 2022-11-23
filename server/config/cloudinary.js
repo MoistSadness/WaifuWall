@@ -1,8 +1,9 @@
 import { v2 as cloudinary } from 'cloudinary'
 import { CloudinaryStorage } from 'multer-storage-cloudinary'
+
+// .env files will not be detected unless dotenv is configured to look in a lower directory
 import path from 'path';
 import url from 'url';
-
 const __filename = url.fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -16,8 +17,10 @@ cloudinary.config({
   secure: true
 });
 
-console.log('cloudinary key', process.env.CLOUDINARY_KEY)
+export default { cloudinary }
 
+/*
+// configuring multer-storage-cloudinary here
 const storage = new CloudinaryStorage({
   cloudinary,
   params: {
@@ -27,5 +30,4 @@ const storage = new CloudinaryStorage({
 })
 
 export default {cloudinary, storage}
-
-//export default { cloudinary }
+*/

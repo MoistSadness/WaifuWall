@@ -1,9 +1,14 @@
 import express from 'express'
 import { getPosts, createPost, updatePost, deletePost, likePost } from '../controllers/posts.js'
-//import upload from '../middleware/multer.js'
+import upload from '../middleware/multer.js'
+
+/*
+// Imports and configuration to get multer-storage-cloudinary working
+// Commenting out to try to get cloudinary sdk to work
 import multer from 'multer'
 import storage from '../config/cloudinary.js'
 const upload = multer(storage)
+*/
 
 const router = express.Router()
 
