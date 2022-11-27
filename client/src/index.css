@@ -11,3 +11,18 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+:root{
+  --default-bg-color: #f5f6fb;
+  --default-text-color: #2f3f56;
+}
+
+h3{
+  margin: 0;
+}
+.app-container{
+  height: 100vh;
+  width: 100vw;
+  background-color: var(--default-bg-color);
+  color: var(--default-text-color);
+}

@@ -13,7 +13,6 @@ dotenv.config()
 
 app.use(express.static('public'));
 
-
 /**
  * In order to parse form-data, middleware like multer needs to be used
  * for parsing multipart/form-data
