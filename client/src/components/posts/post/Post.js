@@ -24,7 +24,7 @@ export default function Post({ post, setCurrentId }) {
                 </IconButton>
             }
             />
-            <CardMedia className={classes.media} image={post.selectedFile} title={post.title} />
+            <CardMedia className={classes.media} image={post.imgData.url} title={post.title} />
             <CardContent>
                 <Typography variant="body2" color="textSecondary">
                     {post.message}

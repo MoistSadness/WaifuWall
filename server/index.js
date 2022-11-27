@@ -3,6 +3,7 @@ import cors from "cors"
 import mongoose from "mongoose";
 import bodyParser from "body-parser"
 import dotenv from 'dotenv'
+import multer from 'multer'
 
 import posts from './routes/posts.js'
 
@@ -12,9 +13,21 @@ dotenv.config()
 
 app.use(express.static('public'));
 
-app.use(bodyParser.json({ limit: '30mb', extended: true }))
-app.use(bodyParser.urlencoded({ limit: '30mb', extended: true, parameterLimit: 10000 }))
 
+/**
+ * In order to parse form-data, middleware like multer needs to be used
+ * for parsing multipart/form-data
+ */
+const upload = multer()
+app.use(upload.array())
+
+// for parsing application/json
+app.use(bodyParser.json({ limit: '30mb', extended: true }))
+
+// for parsing application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ limit: '30mb', extended: true}))
+
+// Import routers
 app.use('/posts', posts)
 
 // Environment variables here

@@ -14,13 +14,17 @@ const emptyForm = {
 }
 
 export default function Form({ currentId, setCurrentId }) {
+    // State that manages the contents of the form
     const [postData, setPostData] = useState(emptyForm)
-    console.log(postData.selectedFile)
 
-    const post = useSelector((state) => (currentId ? state.posts.find((message) => message._id === currentId) : null));       // Fetching data from redux store
+    // Fetching data from redux store
+    const post = useSelector((state) => (currentId ? state.posts.find((message) => message._id === currentId) : null));    
+    console.log(post)
+
     const dispatch = useDispatch()
     const classes = useStyles();
 
+    // Set the data in the form when a post is selected
     useEffect(() => {
         if (post) setPostData(post)
         console.log(post)
@@ -35,11 +39,14 @@ export default function Form({ currentId, setCurrentId }) {
         formData.append('title', postData.title)
         formData.append('message', postData.message)
         formData.append('tags', postData.tags)
-        formData.append('selectedFile', postData.selectedFile)
+        
+        //console.log('formdata', formData)
 
         if (currentId) {
-            dispatch(updatePost(currentId, postData))
+            formData.append('selectedFile', post.imgData.url)
+            dispatch(updatePost(currentId, formData))
         } else {
+            formData.append('selectedFile', postData.selectedFile)
             dispatch(createPost(formData))
         }
     }
