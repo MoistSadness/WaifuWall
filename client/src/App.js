@@ -7,13 +7,21 @@ import { useDispatch } from 'react-redux'
 import Navbar from './components/navbar/Navbar.js'
 import Form from './components/form/Form.js'
 import Posts from './components/posts/Posts.js'
+import Login from './components/navbar/access/Login.js'
+import Register from './components/navbar/access/Register.js'
 import { getPosts } from './actions/posts.js'
 
 
 export default function App() {
     const [currentId, setCurrentId] = useState(null)
+
     const [showForm, setShowForm] = useState(false)
-    console.log(showForm)
+    const [showLogin, setShowLogin] = useState(false)
+    const [showRegister, setShowRegister] = useState(false)
+    const [showFullPost, setShowFullPost] = useState(false)
+    //console.log(showForm)
+    console.log(showLogin)
+    console.log(showRegister)
 
     //const classes = useStyles();
     const dispatch = useDispatch()
@@ -24,9 +32,18 @@ export default function App() {
 
     return (
         <div className="app-container">
-            <Navbar showForm={showForm} setShowForm={setShowForm} />
+            <Navbar
+                showForm={showForm}
+                setShowForm={setShowForm}
+                showLogin={showLogin}
+                setShowLogin={setShowLogin}
+                showRegister={showRegister}
+                setShowRegister={setShowRegister}
+            />
             <div>
-                {showForm ? <Form showForm={showForm} setShowForm={setShowForm}/> : null}
+                {showForm ? <Form showForm={showForm} setShowForm={setShowForm} /> : null}
+                {showLogin ? <Login showLogin={showLogin} setShowLogin={setShowLogin} /> : null}
+                {showRegister ? <Register showRegister={showRegister} setShowRegister={setShowRegister} /> : null}
                 <Posts />
             </div>
         </div>

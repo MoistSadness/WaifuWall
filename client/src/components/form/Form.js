@@ -4,36 +4,12 @@
  */
 
 import React, { useState, useEffect, useRef } from "react";
+import useClickOutsideToClose from '../../utils/useClickOutsideToClose.js'
 import { TextField, Button, Typography, Paper } from "@material-ui/core";
 import { useDispatch, useSelector } from 'react-redux'
 import { createPost, updatePost } from '../../actions/posts.js'
 
 import './Form.css'
-
-/**
-* Hook that alerts clicks outside of the passed ref
-*/
-function useOutsideAlerter(ref, props) {
-    console.log('initref', ref)
-    useEffect(() => {
-        console.log('ref', ref)
-        /**
-         * Close form if clicked outside
-         */
-        function handleClickOutside(event) {
-            if (ref.current && !ref.current.contains(event.target)) {
-                //alert("You clicked outside of me!");
-                props.setShowForm(false)
-            }
-        }
-        // Bind the event listener
-        document.addEventListener("mousedown", handleClickOutside);
-        return () => {
-            // Unbind the event listener on clean up
-            document.removeEventListener("mousedown", handleClickOutside);
-        };
-    }, [ref]);
-}
 
 const emptyForm = {
     creator: '',
@@ -44,17 +20,19 @@ const emptyForm = {
 }
 
 export default function Form(props) {
-    const wrapperRef = useRef(null);
-    useOutsideAlerter(wrapperRef, props);
-
     // State that manages the contents of the form
     const [postData, setPostData] = useState(emptyForm)
+    console.log(postData)
 
     // Fetching data from redux store
     const post = useSelector((state) => (props.currentId ? state.posts.find((message) => message._id === props.currentId) : null));
-    console.log(post)
+    //console.log(post)
 
     const dispatch = useDispatch()
+
+    // Create ref and call the hook that closes the form when the user clicks outside of it
+    const wrapperRef = useRef(null);
+    useClickOutsideToClose(wrapperRef, props.setShowForm);
 
     // Set the data in the form when a post is selected
     useEffect(() => {
@@ -72,7 +50,7 @@ export default function Form(props) {
         formData.append('message', postData.message)
         formData.append('tags', postData.tags)
 
-        //console.log('formdata', formData)
+        console.log('formdata', formData)
 
         if (props.currentId) {
             formData.append('selectedFile', post.imgData.url)
