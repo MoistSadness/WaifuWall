@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useEffect } from "react";
 /**
 * Hook that closes the window when the user clicks outside of it
 *

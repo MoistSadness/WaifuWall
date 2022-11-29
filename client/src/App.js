@@ -44,7 +44,7 @@ export default function App() {
                 {showForm ? <Form showForm={showForm} setShowForm={setShowForm} /> : null}
                 {showLogin ? <Login showLogin={showLogin} setShowLogin={setShowLogin} /> : null}
                 {showRegister ? <Register showRegister={showRegister} setShowRegister={setShowRegister} /> : null}
-                <Posts />
+                <Posts setCurrentId={setCurrentId}/>
             </div>
         </div>
     )

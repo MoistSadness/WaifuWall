@@ -1,23 +1,52 @@
 import React from "react";
-import {useDispatch} from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { deletePost, likePost } from '../../../actions/posts.js'
-import { styled } from '@mui/material/styles';
-import { Card, CardHeader, CardActions, CardContent, CardMedia, Button, Typography } from "@material-ui/core";
-import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 import DeleteIcon from '@mui/icons-material/Delete';
-import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import IconButton, { IconButtonProps } from '@mui/material/IconButton';
-import moment from 'moment'
-import useStyles from './styles.js'
+import EditIcon from '@mui/icons-material/Edit';
+
+import './Post.css'
+import Edit from "@mui/icons-material/Edit";
 
 export default function Post({ post, setCurrentId }) {
-    const classes = useStyles();
     const dispatch = useDispatch()
-    
+
     return (
-        <Card className="classes.card">
+        <section className="card-container" onClick={() => { console.log('hi') }}>
+            <div className="card-body">
+                <div className="title-container">
+                    <h4 className="card-title">{post.title}</h4>
+                    
+                </div>
+                <h5 className="card-creator"> - {post.creator}</h5>
+                <img className="card-img" src={post.imgData.url} />
+                
+            </div>
+        </section>
+    )
+}
+
+/*
+Icons
+
+<div className="card-icons">
+                    <span className="material-symbols-outlined icon-btn" onClick={() => dispatch(likePost(post._id))}>
+                        favorite
+                    </span>
+                    <span className="material-symbols-outlined icon-btn" onClick={() => dispatch(deletePost(post._id))}>
+                        delete
+                    </span>
+                </div>
+
+                <span className="material-symbols-outlined icon-btn">
+                        edit
+                    </span>
+
+*/
+
+
+/**
+<Card className="classes.card">
             <CardHeader title={post.title} subheader={post.creator} action={
                 <IconButton aria-label="settings" onClick={() => {setCurrentId(post._id)}}>
                     <MoreVertIcon />
@@ -47,40 +76,4 @@ export default function Post({ post, setCurrentId }) {
                 </IconButton>
             </CardActions>
         </Card>
-    )
-}
-
-
-
-
-/*
-        <Card className="classes.card">
-            <CardMedia className={classes.media} image={post.selectedFile} title={post.title}/>
-            <div className={classes.overlay}>
-                <Typography variant="h6">{post.creator}</Typography>
-                <Typography variant="body2">{moment(post.createdAt)}</Typography>
-            </div>
-            <div className={classes.overlay2}>
-                <Button style={{color: "white"}} size="small" onclick={() => {}}>
-                    <MoreHorizIcon fontSize="default"/>
-                </Button>
-            </div>
-            <div className={classes.details}>
-                <Typography variant="body2" color="textSecondary">{post.tags.map(tag => `#${tag} `)}</Typography>
-                <CardContent>
-                    <Typography className={classes.title} variant="h5" gutterBottom>{post.message}</Typography>
-                </CardContent>
-                <CardActions className={classes.cardActions}>
-                    <Button size="small" color="primary" onClick={() => {}}>
-                        <ThumbUpAltIcon size="small"/>
-                        Like
-                        {post.likeCount}
-                    </Button>
-                    <Button size="small" color="primary" onClick={() => {}}>
-                        <ThumbUpAltIcon size="small"/>
-                        Delete
-                    </Button>
-                </CardActions>
-            </div>
-        </Card>
-*/
+ */

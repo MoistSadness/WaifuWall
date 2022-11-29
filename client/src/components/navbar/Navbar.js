@@ -7,7 +7,11 @@ export default function Navbar(props) {
     return (
         <nav className="nav-container">
             <div className="nav-button">
-                <button className="nav-new" onClick={() => (props.setShowForm((prevState) => (!prevState)))}>+</button>
+                <button className="nav-new" onClick={() => (props.setShowForm((prevState) => (!prevState)))}>
+                    <span className="material-symbols-outlined">
+                        add
+                    </span>
+                </button>
             </div>
             <h3 className="nav-title">WaifuWall</h3>
             <div className="nav-button">
