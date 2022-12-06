@@ -2,9 +2,9 @@
     background-color: pink;
     box-shadow: 0 4px 80px 0 rgba(0, 0, 0, 0.4), 0 6px 80px 0 rgba(0, 0, 0, 0.38);
     position: fixed;
-    top: 25%;
-    left: 25%;
-    width: 50%;
-    height: 50%;
-    z-index:199;
+    top: 5%;
+    left: 10%;
+    width: 80%;
+    height: 90%;
+    z-index:99;
 }

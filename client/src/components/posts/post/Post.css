@@ -1,35 +1,54 @@
+h4{
+    margin: 0;
+}
+
 .card-container{
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
     background-color: white;
     border-radius: 7px;
 }
-.card-container:hover{
-    filter: brightness(80%);
-}
+
 
 .card-body{
     margin: 5%;
     display: flex;
     flex-direction: column;
 }
-.title-container{
+
+.card-title-wrapper{
     display: flex;
     justify-content: space-between;
 }
-.card-title{
-    font-family: 'Roboto', sans-serif;
-    font-size: 1.5rem;
-    font-weight: 300;
-    margin: 0;
+
+.card-title-container{
+    margin-left: 0.5em;
+    margin-bottom: 1em;
+    display: flex;
+}
+.card-title-container:hover{
+    filter: brightness(80%);
+}
+
+.card-profile-icon{
+    width: 1.5em;
+    height: 1.5em;
+    border-radius: 50%;
+    color: white;
+    background-color: #9aa6ff;
+    font-size: 20px;
+}
+
+.card-profile-icon-text{
+    margin-left: 0.4em;
+    margin-top: 0.1em;
 }
 
 .card-creator{
+    margin-left: 1em;
+    margin-top: 0.3em;
     font-family: 'Lato', serif;
     font-weight: 400;
-    margin: 0.5rem;
-    margin-left: 2rem;
-    margin-bottom: 0.75rem;
 }
 
 .card-img{
@@ -37,4 +56,7 @@
     max-height: 20em;
     object-fit: cover;
     border-radius: 3%;
+}
+.card-img:hover{
+    filter: brightness(80%);
 }

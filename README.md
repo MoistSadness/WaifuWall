@@ -1,4 +1,4 @@
-# WafuWall
+# WaifuWall
 
 This project was originally created by following the listed tutorials:  
  - https://www.youtube.com/watch?v=ngc9gnGgUdA&t=461s 

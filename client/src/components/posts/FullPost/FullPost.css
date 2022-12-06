@@ -1,0 +1,15 @@
+.full-post-body {
+    margin: 2em 10em 2em 10em;
+}
+
+
+
+
+
+
+.full-post-img {
+    width: 100%;
+    height: 80%;
+    object-fit: contain;
+    display: flex;
+}

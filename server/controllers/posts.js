@@ -17,6 +17,8 @@ export const getPosts = async (req, res) => {
 }
 
 export const createPost = async (req, res) => {
+    console.log(req.body)
+
     // Upload image to cloudinary and save data in variable
     const uploadedImage = await cloudinary.cloudinary.uploader
         .upload(req.file.path, {
@@ -42,6 +44,16 @@ export const createPost = async (req, res) => {
     } catch (error) {
         res.status(409).json({ message: error.message })
     }
+}
+
+export const getPost = async (req, res) => {
+    const {id: _id} = req.params
+
+    // Check to see if _id is a valid mongoose id
+    if (!mongoose.Types.ObjectId.isValid(_id)) return res.status(404).send(`Cannot update post with id ${_id}`)
+    
+    const post = await postMessage.findById(_id)
+    res.json(post)
 }
 
 export const updatePost = async (req, res) => {

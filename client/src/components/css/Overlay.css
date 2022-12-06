@@ -1,0 +1,17 @@
+/**
+There are a number of overlay panels that appear when a user clicks on them. 
+To cut down on the amount of code, much of the general formatting for all of them will be here, with more specific styles delared in that component's directory
+*/
+
+.overlay-container {
+    background-color: pink;
+    box-shadow: 0 4px 80px 0 rgba(0, 0, 0, 0.4), 0 6px 80px 0 rgba(0, 0, 0, 0.38);
+    position: fixed;
+    top: 5%;
+    left: 10%;
+    width: 80%;
+    height: 90%;
+    z-index: 99;
+    border-radius: 1em;
+    overflow-y: auto;
+}
