@@ -31,10 +31,6 @@ export default function App() {
         dispatch(getPosts())
     }, [dispatch])
 
-    function getOnePost(){
-        
-    }
-
     return (
         <div className="app-container">
             <Navbar
@@ -46,7 +42,7 @@ export default function App() {
                 setShowRegister={setShowRegister}
             />
             <div>
-                {showForm ? <Form showForm={showForm} setShowForm={setShowForm} /> : null}
+                {showForm ? <Form showForm={showForm} setShowForm={setShowForm} currentId={null} /> : null}
                 {showLogin ? <Login showLogin={showLogin} setShowLogin={setShowLogin} /> : null}
                 {showRegister ? <Register showRegister={showRegister} setShowRegister={setShowRegister} /> : null}
                 {showFullPost && currentId && <FullPost currentId={currentId} setShowFullPost={setShowFullPost}/>}

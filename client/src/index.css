@@ -31,3 +31,9 @@ h3{
   background-color: var(--default-bg-color);
   color: var(--default-text-color);
 }
+
+@media (max-width: 825px) {
+  .app-container{
+      height:auto;
+  }
+}

@@ -1,38 +1,27 @@
-import React from "react";
+import React, {useState} from "react";
 import { useDispatch } from 'react-redux'
 import { deletePost, likePost } from '../../../actions/posts.js'
+import PostCard from "./PostCard.js";
+import PostMenu from "./PostMenu.js";
 
 import './Post.css'
 
 export default function Post({ post, setCurrentId, setShowFullPost }) {
+    const [showMenu, setShowMenu] = useState(false)    
+
+
+
     const dispatch = useDispatch()
 
-    function handleClick() {
-        setCurrentId(post._id)
-        //console.log(post._id)
-        setShowFullPost(true)
-    }
+    
 
     return (
         <section className="card-container" >
             <div className="card-body">
-                <div className="card-title-wrapper">
-                    <div className="card-title-container">
-                        <div className="card-profile-icon">
-                            <div className="card-profile-icon-text">
-                                {post.creator[0].toUpperCase()}
-                            </div>
-                        </div>
-                        <h4 className="card-creator">{post.creator}</h4>
-                    </div>
-                    <div className="material-symbols-outlined">
-                        <span class="material-symbols-outlined">
-                            more_vert
-                        </span>
-                    </div>
-                </div>
-                <img className="card-img" src={post.imgData.url} onClick={handleClick} />
-
+                {showMenu ? 
+                    <PostMenu post={post} setShowMenu={setShowMenu} /> : 
+                    <PostCard post={post} setCurrentId={setCurrentId} setShowFullPost={setShowFullPost} setShowMenu={setShowMenu} />
+                }
             </div>
         </section>
     )

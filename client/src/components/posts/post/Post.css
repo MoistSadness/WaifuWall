@@ -9,7 +9,6 @@ h4{
     border-radius: 7px;
 }
 
-
 .card-body{
     margin: 5%;
     display: flex;
@@ -59,4 +58,42 @@ h4{
 }
 .card-img:hover{
     filter: brightness(80%);
+}
+
+
+.card-menu-title-container{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.card-menu-container{
+    height: 21.4rem;   
+}
+
+.card-menu-btn-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 3em;
+}
+
+.card-menu-btn{
+    width: 10em;
+    height: 3em;
+    font-family: 'Lato', serif;
+    font-weight: 700;
+    font-size: 1em;
+    margin-top: 1.5em;
+    background-color: #9aa6ff;
+    color: white;
+    border: none;
+    border-radius: 0.5em;
+}
+.card-menu-btn:hover{
+    filter: brightness(80%);
+}
+
+.card-menu-delete{
+    background-color: #ff6273;
 }
