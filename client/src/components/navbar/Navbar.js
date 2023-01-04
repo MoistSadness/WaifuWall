@@ -15,6 +15,25 @@ export default function Navbar(props) {
             </div>
             <h3 className="nav-title">WaifuWall</h3>
             <div className="nav-button">
+                
+            </div>
+        </nav>
+    )
+}
+
+/* ---In case I want the login/register buttons back ---
+
+return (
+        <nav className="nav-container">
+            <div className="nav-button">
+                <button className="nav-new" onClick={() => (props.setShowForm((prevState) => (!prevState)))}>
+                    <span className="material-symbols-outlined">
+                        add
+                    </span>
+                </button>
+            </div>
+            <h3 className="nav-title">WaifuWall</h3>
+            <div className="nav-button">
                 <span>
                     <button className="nav-access" onClick={() => (props.setShowLogin((prevState) => (!prevState)))}>Login</button>
                 </span>
@@ -24,4 +43,4 @@ export default function Navbar(props) {
             </div>
         </nav>
     )
-}
+ */

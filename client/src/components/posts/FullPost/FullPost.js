@@ -34,23 +34,16 @@ export default function FullPost({ currentId, setShowFullPost }) {
         <div className="overlay-container" ref={wrapperRef}>
             <div className="full-post-body">
                 <div>
-                    <div>
-                        {postData.creator}
-                    </div>
                     <div className="full-post-title">
                         {postData.title}
                     </div>
                 </div>
 
-                <div>
+                <div className="full-post-message">
                     {postData.message}
                 </div>
 
                     <img className="full-post-img" src={postData.imgData.url} />
-
-                <div>
-                    <div>{postData.likeCount}</div>
-                </div>
             </div>
         </div>
     )

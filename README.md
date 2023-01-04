@@ -4,7 +4,7 @@ This project was originally created by following the listed tutorials:
  - https://www.youtube.com/watch?v=ngc9gnGgUdA&t=461s 
  - https://www.youtube.com/watch?v=aibtHnbeuio  
 
-After completing the tutorial, I felt as though the project had more potential and decided to use it as a framework for my own application  
+After completing the tutorial, I felt as though the project had more potential and decided to use it as the starting point for my own application  
 This included the following
 1. Converted the image upload from base64 to multipart-formdata to increase performance
 2. Used cloudinary as a CDN to store images so the admin doesn't have to worry about storing files on the server

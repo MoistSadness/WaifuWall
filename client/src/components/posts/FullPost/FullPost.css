@@ -2,14 +2,22 @@
     margin: 2em 10em 2em 10em;
 }
 
+.full-post-title{
+    font-size: 1.5rem;
+    margin-left: 1rem;
+}
 
-
-
-
+.full-post-message{
+    margin-left: 2rem;
+    margin-right: 2rem;
+    margin-top: 1rem;
+}
 
 .full-post-img {
     width: 100%;
     height: 80%;
+    margin-top: 1.5rem;
+    box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.4), 0 4px 20px 0 rgba(0, 0, 0, 0.38);
     object-fit: contain;
     display: flex;
 }

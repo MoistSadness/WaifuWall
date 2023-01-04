@@ -8,6 +8,8 @@ import useClickOutsideToClose from '../../utils/useClickOutsideToClose.js'
 import { TextField, Button, Typography, Paper } from "@material-ui/core";
 import { useDispatch, useSelector } from 'react-redux'
 import { createPost, updatePost } from '../../actions/posts.js'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import '../css/Overlay.css'
 import './Form.css'
@@ -59,7 +61,7 @@ export default function Form({ showForm, setShowForm, currentId }) {
             setShowForm(false)
         } else {
             formData.append('selectedFile', postData.selectedFile)
-            dispatch(createPost(formData))
+            const submit = dispatch(createPost(formData))
             setShowForm(false)
         }
 
@@ -68,6 +70,9 @@ export default function Form({ showForm, setShowForm, currentId }) {
     }
 
     return (
+        <>
+        <ToastContainer />
+
         <div className="overlay-container" ref={wrapperRef}>
             <form className="form-container" autoComplete="off" noValidate onSubmit={handleSubmit} encType="multipart/form-data">
                 <div className="form-title">Add to the Wall</div>
@@ -93,5 +98,6 @@ export default function Form({ showForm, setShowForm, currentId }) {
                 </div>
             </form>
         </div>
+        </>
     )
 }
