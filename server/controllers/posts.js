@@ -17,6 +17,7 @@ export const getPosts = async (req, res) => {
 }
 
 export const createPost = async (req, res) => {
+    try {
     console.log(req.body)
 
     // Upload image to cloudinary and save data in variable
@@ -38,7 +39,7 @@ export const createPost = async (req, res) => {
     const newPost = new postMessage(post)
     console.log(newPost)
 
-    try {
+   
         await newPost.save()
         res.status(201).json(newPost)
     } catch (error) {

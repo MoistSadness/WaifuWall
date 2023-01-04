@@ -26,6 +26,16 @@ const secret = process.env.SECRET || "ThisShouldBeABetterSecret"
 const DB_URL = process.env.DB_URL || "mongodb://localhost:27017/Memories"
 const PORT = process.env.PORT || 5000
 
+/**
+ * General purpose error handler
+ */
+app.use((err, req, res, next) => {
+    const { statusCode = 500, message } = err;
+    if (!err.message) err.message = "Oh, no!";
+    res.status(statusCode).send(message);
+    //res.status(404).send("NOT FOUND!!!");
+})
+
 /*
     Connect to database and listen for requests here
     Currently using local MongoBD, switch to the cloud version for deployment
